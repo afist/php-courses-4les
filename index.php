@@ -22,7 +22,7 @@
 
     <form id="form">
         <p>
-            <label for="user_login">Введите математическую операцию<br />
+            <label for="user_login">Введите одну математическую операцию<br />
                 <input type="text" name="expression" id="user_login" class="input" value="" size="30" /></label>
         </p>
         <p class="submit">
