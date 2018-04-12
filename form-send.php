@@ -33,7 +33,9 @@ function removeSpase($str){
              $i--;
         }
 
+
     }
+    $arr = charDel($arr);
     return implode('', $arr);
 }
 
@@ -56,7 +58,7 @@ function checkSymbol($str){
         if ($operation) {
             ++$countOperation;
         }
-        if (($number or $operation) and ($countOperation<2)) {
+        if ($number or $operation) {
             continue;
         } else {
             echo "Error invalid characters";
@@ -70,47 +72,60 @@ function checkSymbol($str){
 
     return true;
 }
-
-function matOperation($str){
-    $arr = str_split($str);
-    $count = count($arr);
-    for ($i=0; $i < $count ; $i++) {
-        if (checkOperation(ord($arr[$i]))) {
-            $str_end = explode($arr[$i],$str);
-            $operation = $arr[$i];
-            // var_dump($str_end);
-            // var_dump($operation);
-
-            return [$str_end, $operation];
+function charDel($arr){
+        for ($i=0; $i < count($arr) ; $i++) { 
+            if ( checkOperation(ord($arr[0])) ) {
+                array_splice($arr,0,1);
+            };
+            $lastChar = count($arr)-1;
+            if ( checkOperation(ord($arr[$lastChar])) ) {
+                array_splice($arr,$lastChar,1);
+            };
         }
-    }
+        return $arr;
+
 }
 
+// function matOperation($str){
+//     $arr = str_split($str);
+//     $count = count($arr);
+//     for ($i=0; $i < $count ; $i++) {
+//         if (checkOperation(ord($arr[$i]))) {
+//             $str_end = explode($arr[$i],$str);
+//             $operation = $arr[$i];
+//             // var_dump($str_end);
+//             // var_dump($operation);
 
-function endOperation($arr){
-switch ($arr[1][0]) {
-    case '*':
-        return (int)$arr[0][0]*(int)$arr[0][1];
-        break;
-    case '/':
-        return (int)$arr[0][0]/(int)$arr[0][1];
-        break;
-    case '-':
-        return (int)$arr[0][0]-(int)$arr[0][1];
-        break;
-    case '+':
-        return (int)$arr[0][0]+(int)$arr[0][1];
-        break;
-}
-}
+//             return [$str_end, $operation];
+//         }
+//     }
+// }
+
+
+// function endOperation($arr){
+// switch ($arr[1][0]) {
+//     case '*':
+//         return (int)$arr[0][0]*(int)$arr[0][1];
+//         break;
+//     case '/':
+//         return (int)$arr[0][0]/(int)$arr[0][1];
+//         break;
+//     case '-':
+//         return (int)$arr[0][0]-(int)$arr[0][1];
+//         break;
+//     case '+':
+//         return (int)$arr[0][0]+(int)$arr[0][1];
+//         break;
+// }
+// }
 
 
 $expression = removeSpase($expression);
 if (checkSymbol($expression)) {
-$c = matOperation($expression);
-// nicePrint($c);
-$b = endOperation($c);
-echo $b;
+// $c = matOperation($expression);
+// $b = endOperation($c);
+eval('$result='.$expression.';');
+echo $result;
 };
 
 

@@ -12,7 +12,6 @@
     <!-- Последняя компиляция и сжатый JavaScript -->
     <link rel='stylesheet' href='http://clonecss.com/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5B%5D=dashicons,buttons,forms,l10n,login&amp;ver=4.9.5' type='text/css' media='all' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 
@@ -22,7 +21,7 @@
 
     <form id="form">
         <p>
-            <label for="user_login">Введите одну математическую операцию<br />
+            <label for="user_login">Введите любую математическую операцию<br />
                 <input type="text" name="expression" id="user_login" class="input" value="" size="30" /></label>
         </p>
         <p class="submit">
@@ -57,12 +56,21 @@
 
     })
 </script>
-<?php
 
 
-?>
+
 
 
 <h3 class="hi" style="text-align: center"></h3>
+
+
+
+
+
+
+
+<!-- PrefixFree -->
+<script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
+
 </body>
 </html>
