@@ -25,22 +25,14 @@
             <label for="user_login">Введите математическую операцию<br />
                 <input type="text" name="expression" id="user_login" class="input" value="" size="30" /></label>
         </p>
-<!--        <p>-->
-<!--            <label for="user_pass">Password<br />-->
-<!--                <input type="password" name="password" id="user_pass" class="input" value="" size="20" /></label>-->
-<!--        </p>-->
-<!--        <p class="forgetmenot">-->
-<!--            <label for="rememberme">-->
-<!--                <input name="rememberme" type="checkbox" id="rememberme" value="forever"  /> Remember Me</label>-->
-<!--        </p>-->
         <p class="submit">
             <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
         </p>
     </form>
 
-    <p id="nav">
+<!--     <p id="nav">
         <a href="">Lost your password?</a>
-    </p>
+    </p> -->
 
 
 </div>
@@ -66,33 +58,8 @@
     })
 </script>
 <?php
-var_dump(ord("0"));
 
 
-
-
-echo remove_spase("123a     32a 23 23 2 3");
-//echo remove_spase("134 34 5345 34556 5");
-
-function nice_print($str){
-    echo "<pre>";
-    print_r($str);
-    echo "</pre>";
-
-}
-
-
-function remove_spase($str){
-    $arr = str_split($str);
-    for ($i = 0; $i < count($arr); $i++){
-        if ($arr[$i] == " "){
-             array_splice($arr,$i,1);
-             $i--;
-        }
-
-    }
-    return implode('', $arr);
-}
 ?>
 
 
