@@ -25,7 +25,7 @@
                 <input type="text" name="expression" id="user_login" class="input" value="" size="30" /></label>
         </p>
         <p class="submit">
-            <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In" />
+            <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Count up" />
         </p>
     </form>
 
