@@ -4,18 +4,12 @@
 if (!empty($_POST)){
     $expression = test_input($_POST["expression"]);
 }
-//elseif(!empty($_GET)){
-//    $expression = test_input($_GET["expression"]);
-//    }
 function test_input($data) {
     $data = trim($data); // удаляем пробелы с конца и начала строки
     $data = stripslashes($data); // Удаляет экранирование символов
     $data = htmlspecialchars($data); //Преобразует специальные символы в HTML-сущности
     return $data;
 }
-
-
-//echo remove_spase("134 34 5345 34556 5");
 
 function nicePrint($str){
     echo "<pre>";
@@ -40,7 +34,7 @@ function removeSpase($str){
 }
 
 function checkNumber($a){
-    return (48<=$a && $a<=58) ? true : false;
+    return (48<=$a && $a<=58) or (46 ==$a) ? true : false;
 };
 
 function checkOperation($a){
@@ -56,7 +50,8 @@ function checkSymbol($str){
         $operation = checkOperation(ord($arr[$i]));
         
         if ($operation) {
-            ++$countOperation;
+            $countOperation++;
+            
         }
         if ($number or $operation) {
             continue;
@@ -64,12 +59,29 @@ function checkSymbol($str){
             echo "Error invalid characters";
             return false;
         }
+
     }
     if ($countOperation ==0) {
         echo "Error invalid characters";
         return false;
     }
 
+    return true;
+}
+function doubleCheck($str){
+    $arr = str_split($str);
+    $count = count($arr)-1;
+    for ($i=0; $i < $count; $i++) { 
+        // echo checkOperation(ord($arr[$i]));
+        // echo checkOperation(ord($arr[$i+1]));
+        if (checkOperation(ord($arr[$i]))) {
+            if ( checkOperation(ord($arr[$i+1])) ) {
+            echo "Error invalid characters";
+            return false;
+            }
+        }
+        
+    }
     return true;
 }
 function charDel($arr){
@@ -121,11 +133,11 @@ function charDel($arr){
 
 
 $expression = removeSpase($expression);
-if (checkSymbol($expression)) {
+if (checkSymbol($expression) and doubleCheck($expression) ) {
 // $c = matOperation($expression);
 // $b = endOperation($c);
 eval('$result='.$expression.';');
-echo $result;
+echo $expression." = ".$result;
 };
 
 
